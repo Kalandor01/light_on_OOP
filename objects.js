@@ -1,4 +1,8 @@
-import resize from "./script.js";
+
+function resize(size) {
+    $("#field").height($("#field").width());
+    $(".light").css("width", `${100/size}%`);
+}
 
 class Field {
     constructor(elementName, size=3) {
@@ -12,7 +16,7 @@ class Field {
         for (let x = 0; x < this.size*this.size; x++) {
             this.lamps.push(new Light(x, this.elementName));
         }
-        resize();
+        resize(this.size);
     }
 }
 
@@ -25,7 +29,7 @@ class Light {
         this.element = $(pElement).children(".light:last-child");
         this.element.on("click", ()=>{
             this.switch();
-        })
+        });
         if(Math.random() * 100 < 20)
             this.switch();
     }
@@ -36,4 +40,4 @@ class Light {
     }
 }
 
-export {Light, Field};
+export {Field, resize};

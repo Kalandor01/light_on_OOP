@@ -3,11 +3,25 @@
     box-sizing: border-box;
 }
 
+#game {
+    border: 1px solid black;
+    margin: auto;
+    width: 80%;
+    max-width: 500px;
+
+}
+
+#options {
+    border: 1px solid black;
+    width: 100%;
+    text-align: center;
+}
+
 #field {
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
-    width: 33%;
+    width: 100%;
 }
 
 .light {
