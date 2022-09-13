@@ -1,32 +1,33 @@
+import resize from "./script.js";
 
 class Field {
-    constructor(element, size=3) {
-        this.id = id;
-        this.on = false;
-        this.element = $(element);
-        console.log(this.element);
+    constructor(elementName, size=3) {
+        this.size = size;
+        this.elementName = elementName;
+        this.lamps = [];
         this.generate();
     }
 
     generate() {
         for (let x = 0; x < this.size*this.size; x++) {
-            
+            this.lamps.push(new Light(x, this.elementName));
         }
+        resize();
     }
 }
 
-class Lamp {
+class Light {
     constructor(id, pElement) {
         this.id = id;
         this.on = false;
-        const elem = `<div class="lamp"></div>`;
+        const elem = `<div class="light"></div>`;
         $(pElement).append(elem);
-        console.log(pElement);
-        this.element = $(pElement).children(".lamp:last-child");
-        console.log(this.element);
+        this.element = $(pElement).children(".light:last-child");
         this.element.on("click", ()=>{
             this.switch();
         })
+        if(Math.random() * 100 < 20)
+            this.switch();
     }
 
     switch() {
@@ -35,4 +36,4 @@ class Lamp {
     }
 }
 
-export {Lamp, Field};
+export {Light, Field};
