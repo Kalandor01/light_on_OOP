@@ -19,7 +19,7 @@ class Field {
 
     generate() {
         for (let x = 0; x < this.size*this.size; x++) {
-            this.lamps.push(new Light(x, this.element_name));
+            this.lamps.push(new Light(x, this.element_name, (Math.random() * 100 < 20)));
             //trigger count
             let last_lamp = $(this.element_name).children(".light:last-child");
             last_lamp.on("click", ()=>{
@@ -45,7 +45,7 @@ class Field {
 }
 
 class Light {
-    constructor(id, p_element) {
+    constructor(id, p_element, on) {
         this.id = id;
         this.on = false;
         const elem = `<div class="light"></div>`;
@@ -54,7 +54,7 @@ class Light {
         this.element.on("click", ()=>{
             this.switch();
         });
-        if(Math.random() * 100 < 20)
+        if(on)
             this.switch();
     }
 
