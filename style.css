@@ -4,10 +4,9 @@
 }
 
 #game {
+    flex: 0 0 auto;
+    width: 70%;
     border: 1px solid black;
-    margin: auto;
-    width: 80%;
-    max-width: 500px;
 
 }
 
@@ -24,6 +23,40 @@
     width: 100%;
 }
 
+#info {
+    border: 1px solid black;
+    width: 100%;
+    text-align: center;
+}
+
+#leader_board {
+    flex: 0 0 auto;
+    width: 30%;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+#leader_board>h3 {
+    text-align: center;
+}
+
+#leader_board>p {
+    white-space: pre-line;
+}
+
+#info>p {
+    margin: 0;
+}
+
+#container {
+    width: 80%;
+    max-width: 600px;
+    margin: auto;
+    border: 1px solid black;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
 .light {
     border-radius: 1000px;
     border: 1px solid gray;
@@ -32,4 +65,19 @@
 
 .on {
     background-color: rgb(0, 145, 0);
+}
+
+@media screen and (max-width:500px) {
+
+    #container {
+        display: inline;
+    }
+
+    #game {
+        width: 100%;
+    }
+
+    #leader_board {
+        width: 100%;
+    }
 }

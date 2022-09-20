@@ -8,6 +8,9 @@ var size = 3;
 var size_limit = 100;
 const field_name = "#field";
 
+var field;
+var play_num = 0;
+
 $(function () {
     //make field
     make_field();
@@ -20,6 +23,11 @@ $(function () {
             if(new_size <= size_limit)
             {
                 size = new_size;
+                if(field.won)
+                {
+                    play_num++;
+                    $("#leader_board>p").append(`${play_num}. game(${field.size}x${field.size}): ${field.try_num} move${(field.size==1?"":"s")}\n`);
+                }
                 make_field(true);
             }
             else
@@ -33,5 +41,5 @@ $(function () {
 function make_field(remake=false) {
     if(remake)
         $(field_name).empty();
-    const field = new Field(field_name, size);
+    field = new Field(field_name, size, "#info");
 }
